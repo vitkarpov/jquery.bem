@@ -1,0 +1,28 @@
+{
+  "name": "jQuery.BEM",
+  "version": "1.0.0",
+  "homepage": "https://github.com/vitkarpov/jquery.bem",
+  "authors": [
+    "Viktor Karpov <viktor.s.karpov@gmail.com>"
+  ],
+  "description": "jQuery Plugin which helps to work with BEM entities",
+  "main": "jquery.bem.js",
+  "keywords": [
+    "bem",
+    "jquery"
+  ],
+  "dependencies": {
+    "jquery": ">=1.10.2"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "jasmine-expect": "~1.22.2"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ]
+}
