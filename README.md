@@ -197,6 +197,22 @@ $b.setMod('color', 'red');
 
 // red
 $b.getMod('color');
+
+// color
+$b.getMod();
+```
+
+```js
+var $b = ('.block1 .block2');
+
+// .block1_mod
+$b.setMod('block1:mod1');
+
+// mod1
+$b.getMod('block1');
+
+// null
+$b.getMod('block2:mod1');
 ```
 
 ```js
