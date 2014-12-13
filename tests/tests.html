@@ -5,28 +5,20 @@
         <title>jQuery.BEM Unit Tests</title>
         <link rel="stylesheet" type="text/css" href="../bower_components/mocha/mocha.css" />
         <style>
-            .block1 {
+            #html {
+                position: absolute;
                 visibility: hidden;
             }
         </style>
     </head>
     <body>
-        <div class="block1">
-            <div class="block1__element1">
-                hello
-            </div>
-            <div class="block1__element2 block2">
-                <div class="block1__element3 block2__element1">
-                    world
-                </div>
-            </div>
-        </div>
+        <div id="html"></div>
         <div id="mocha"></div>
 
         <script src="https://yastatic.net/jquery/1.9.1/jquery.js"></script>
         <script src="../bower_components/mocha/mocha.js"></script>
-        <script src="../bower_components/jasmine-expect/dist/jasmine-matchers.js"></script>
-        <script src="jquery.bem.js"></script>
+        <script src="../bower_components/expectations/expectations.js"></script>
+        <script src="../jquery.bem.js"></script>
         <script src="tests.js"></script>
 
         <script type="text/javascript">
