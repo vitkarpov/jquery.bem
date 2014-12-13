@@ -2,7 +2,7 @@ mocha.setup('bdd');
 
 // use the following DOM Tree
 HTML = [
-    '<div class="block1">',
+    '<div class="block1 js-foo is-bar _baz">',
     '   <div class="block1__element1">',
     '      hello',
     '   </div>',
@@ -65,39 +65,53 @@ describe('jQuery.BEM', function() {
             expect(this.$b2.hasClass('block2_mod')).toBeTruthy();
             expect(this.$b2.hasClass('block1__element2_mod')).toBeFalsy();
         });
+
+        it('should not set mod for js- or is- prefixed classes', function() {
+            this.$b1.setMod('mod');
+            expect(this.$b1.hasClass('js-foo_mod')).toBeFalsy();
+            expect(this.$b1.hasClass('is-bar_mod')).toBeFalsy();
+            expect(this.$b1.hasClass('_baz_mod')).toBeFalsy();
+        })
     });
     
     describe('delMod', function() {
         beforeEach(function() {
             this.$b1.setMod('mod');
+            this.$b1.setMod('mod', 'value');
             this.$b2.setMod('mod');
             this.$b1__el1.setMod('mod', 'val');
             this.$b1__el2.setMod('mod');
         });
 
-        it('should set mod without value', function() {
+        it('should remove mod without value', function() {
             expect(
                 this.$b1.delMod('mod').hasClass('block1_mod')
             ).toBeFalsy();
         });
 
-        it('should set mod with value', function() {
+        it('should remove mod with value', function() {
             expect(
                 this.$b1__el1.delMod('mod', 'val').hasClass('block1_mod_val')
             ).toBeFalsy();
         });
 
-        it('should set mod for all blocks or elements on specific node', function() {
+        it('should remove mod for all blocks or elements on specific node', function() {
             this.$b2.delMod('mod');
             expect(this.$b2.hasClass('block2_mod')).toBeFalsy();
             expect(this.$b1__el2.hasClass('block1__element2_mod')).toBeFalsy();
         });
 
-        it('should set mod for specific block that is chosen by filter', function() {
+        it('should remove mod for specific block that is chosen by filter', function() {
             this.$b2.delMod('block2:mod');
             expect(this.$b2.hasClass('block2_mod')).toBeFalsy();
             expect(this.$b2.hasClass('block1__element2_mod')).toBeTruthy();
         });
+
+        it('should remove mod with specific value', function() {
+            this.$b1.delMod('mod', 'value');
+            expect(this.$b1.hasClass('block1_mod_value')).toBeFalsy();
+            expect(this.$b1.hasClass('block1_mod')).toBeTruthy();
+        })
     });
 
     describe('hasMod', function() {

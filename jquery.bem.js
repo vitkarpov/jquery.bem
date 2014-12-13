@@ -7,26 +7,57 @@
      *
      * @param {String} mod   modifier or block`s filter with modifier
      * @param {String} value unnecessary value of the modifier
+     * @return {jQuery}
      */
     $.fn.setMod = function(mod, value) {
         return this.each(function() {
-            var $node = $(this);
-            var blockByFilter = getIdBlockByFilter(mod);
-            var classes = (blockByFilter)
-                            ? [blockByFilter]
-                            : $node.attr('class').split(' ');
+            $(this).addClass(getBlocksClassesOnNode.call(this, mod, value).join(' '));
+        });
+    }
 
-            if (blockByFilter) {
-                mod = mod.split(':')[1];
+    /**
+     * Removes modifier for each element in collection
+     *
+     * @param  {[type]} mod   modifier or block`s filter with modifier
+     * @param  {[type]} value unnecessary value of modifier
+     * @return {jQuery}
+     */
+    $.fn.delMod = function(mod, value) {
+        return this.each(function() {
+            $(this).removeClass(getBlocksClassesOnNode.call(this, mod, value).join(' '));
+        });
+    }
+
+    /**
+     * Returns block`s classes specified on a node
+     * Warning: this should refer to the node
+     *
+     * @param  {[type]} mod   modifier or block`s filter with modifier
+     * @param  {[type]} value unnecessary value of modifier
+     * @return {Array}
+     */
+    function getBlocksClassesOnNode(mod, value) {
+        var $node = $(this);
+        var blockByFilter = getIdBlockByFilter(mod);
+        var classes = (blockByFilter)
+                        ? [blockByFilter]
+                        : $node.attr('class').split(' ');
+
+        if (blockByFilter) {
+            mod = mod.split(':')[1];
+        }
+
+        return classes.map(function(item) {
+            // js, is, _ prefixed classes shouldn't be processed
+            if (/^(js-|is-|_)\w+/.test(item)) {
+                return '';
             }
 
-            classes.forEach(function(item) {
-                var clazz = item + MOD_DLMTR + mod;
-                if (value) {
-                    clazz += MOD_DLMTR + value;
-                }
-                $node.addClass(clazz);
-            });
+            var clazz = item + MOD_DLMTR + mod;
+            if (value) {
+                clazz += MOD_DLMTR + value;
+            }
+            return clazz;
         });
     }
 
