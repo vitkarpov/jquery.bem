@@ -4,12 +4,12 @@ window.files = [
   "originalName": "README.md",
   "originalPath": "README.md",
   "name": "index.html",
-  "title": "jQuery.BEM: helps to work with BEM entities",
+  "title": "jQuery.BEM",
   "toc": [
     {
       "level": 1,
-      "slug": "jquery-bem-helps-to-work-with-bem-entities",
-      "title": "jQuery.BEM: helps to work with BEM entities"
+      "slug": "jquery-bem",
+      "title": "jQuery.BEM"
     },
     {
       "level": 2,
@@ -44,12 +44,12 @@ window.files = [
   "originalPath": "jquery.bem.js",
   "name": "jquery.bem.js.html",
   "lang": "javascript",
-  "title": "jQuery.BEM: helps to work with BEM entities",
+  "title": "Source code with comments",
   "toc": [
     {
       "level": 1,
-      "slug": "jquery-bem-helps-to-work-with-bem-entities",
-      "title": "jQuery.BEM: helps to work with BEM entities"
+      "slug": "source-code-with-comments",
+      "title": "Source code with comments"
     }
   ]
 }
