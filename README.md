@@ -1,6 +1,6 @@
 # jQuery.BEM: helps to work with BEM entities
 
-With jQuery BEM you can interact with BEM Tree: set, remove and check modifiers.
+With jQuery BEM you can interact with [BEM Tree](http://bem.info/method/definitions/): set, remove and check modifiers.
 
 [http://jsfiddle.net/vitkarpov/ouLr0ctw/](http://jsfiddle.net/vitkarpov/ouLr0ctw/)
 ![https://yadi.sk/i/zbyoEHKQdMpj8](https://raw.githubusercontent.com/vitkarpov/jquery.bem/master/docs/usage-example.gif)
