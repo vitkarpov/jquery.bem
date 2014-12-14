@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery.BEM: helps to work with BEM entities - README.md</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+  <meta name="groc-relative-root" content=""/>
+  <meta name="groc-document-path" content="README.md"/>
+  
+</head>
+<body>
+  <div id="file-area">
+    <div id="meta">
+      <code class="file-path">
+      
+        README.md
+      
+      </code>
+    </div>
+    <div id="document">
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><h1 id="jquery-bem-helps-to-work-with-bem-entities"><a href="#jquery-bem-helps-to-work-with-bem-entities" class="anchor"></a>jQuery.BEM: helps to work with BEM entities</h1><p>With jQuery BEM you can interact with <a href="http://bem.info/method/definitions/">BEM Tree</a>: set, remove and check modifiers.</p>
+<p><a href="http://jsfiddle.net/vitkarpov/ouLr0ctw/">http://jsfiddle.net/vitkarpov/ouLr0ctw/</a>
+<img src="https://raw.githubusercontent.com/vitkarpov/jquery.bem/master/docs/usage-example.gif" alt="https://yadi.sk/i/zbyoEHKQdMpj8"></p>
+<h2 id="api"><a href="#api" class="anchor"></a>API</h2><h3 id="setmod"><a href="#setmod" class="anchor"></a>setMod</h3><pre><code class="lang-js"><span class="hljs-keyword">var</span> $b = $(<span class="hljs-string">'.block'</span>);
+
+<span class="hljs-comment">// .block_mod</span>
+$b.setMod(<span class="hljs-string">'mod'</span>);
+
+<span class="hljs-comment">// .block_mod_val</span>
+$b.setMod(<span class="hljs-string">'mod'</span>, <span class="hljs-string">'val'</span>);
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> $el = $(<span class="hljs-string">'.block__element'</span>);
+
+<span class="hljs-comment">// .block__element_mod</span>
+$el.setMod(<span class="hljs-string">'mod'</span>);
+
+<span class="hljs-comment">// .block__element_mod_val</span>
+$el.setMod(<span class="hljs-string">'mod'</span>, <span class="hljs-string">'val'</span>);
+</code></pre>
+<p>What if you have mix of blocks or elements on the same node? You have to just specify what block do you want to change using special syntax for mods` keys.</p>
+<pre><code><span class="hljs-keyword">block</span>:<span class="hljs-keyword">mod</span>
+</code></pre><p>For instance,</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> $b = $(<span class="hljs-string">'.block1 .block2'</span>)
+
+<span class="hljs-comment">// block1_mod_val</span>
+$b.setMod(<span class="hljs-string">'block1:mod'</span>, <span class="hljs-string">'val'</span>);
+
+<span class="hljs-comment">// block2_mod_val</span>
+$b.setMod(<span class="hljs-string">'block2:mod'</span>, <span class="hljs-string">'val'</span>);
+</code></pre>
+<p>If you don&#39;t specify the block then plugin will change them all</p>
+<pre><code class="lang-js"><span class="hljs-comment">// block1_mod_val block2_mod_val</span>
+$b.setMod(<span class="hljs-string">'mod'</span>, <span class="hljs-string">'val'</span>);
+</code></pre>
+<h2 id="delmod"><a href="#delmod" class="anchor"></a>delMod</h2><p>Similary to setMod there is delMod method</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> $b = $(<span class="hljs-string">'.block'</span>);
+
+<span class="hljs-comment">// .block_mod =&gt; .block</span>
+$b.delMod(<span class="hljs-string">'mod'</span>);
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> $el = $(<span class="hljs-string">'.block__element'</span>);
+
+<span class="hljs-comment">// .block__element_mod ==&gt; .block__element</span>
+$el.delMod(<span class="hljs-string">'mod'</span>);
+</code></pre>
+<p>Special syntax for mods` keys to specify block you want to change works as well:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> $b = $(<span class="hljs-string">'.block1 .block2'</span>)
+
+<span class="hljs-comment">// block1_mod_val =&gt; block1 block2_mod_val</span>
+$b.delMod(<span class="hljs-string">'block1:mod'</span>);
+
+<span class="hljs-comment">// block2_mod_val =&gt; block1_mod_val block2</span>
+$b.delMod(<span class="hljs-string">'block2:mod'</span>);
+</code></pre>
+<p>If you don&#39;t specify the block then plugin will remove that mod from all blocks added to the node:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// block1_mod_val block2_mod_val =&gt; block1 block2</span>
+$b.delMod(<span class="hljs-string">'mod'</span>);
+</code></pre>
+<h2 id="hasmod"><a href="#hasmod" class="anchor"></a>hasMod</h2><pre><code class="lang-js"><span class="hljs-keyword">var</span> $b = $(<span class="hljs-string">'.block_mod_val'</span>);
+
+<span class="hljs-comment">// true</span>
+$b.hasMod(<span class="hljs-string">'mod'</span>);
+<span class="hljs-comment">// true</span>
+$b.hasMod(<span class="hljs-string">'mod'</span>, <span class="hljs-string">'val'</span>);
+<span class="hljs-comment">// false</span>
+$b.hasMod(<span class="hljs-string">'mod'</span>, <span class="hljs-string">'val2'</span>);
+
+$b.delMod(<span class="hljs-string">'mod'</span>);
+
+<span class="hljs-comment">// false</span>
+$b.hasMod(<span class="hljs-string">'mod'</span>);
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> $el = $(<span class="hljs-string">'.block1 .block2__element_mod'</span>);
+
+<span class="hljs-comment">// true</span>
+$el.hasMod(<span class="hljs-string">'mod'</span>);
+
+<span class="hljs-comment">// false</span>
+$el.hasMod(<span class="hljs-string">'block1:mod'</span>);
+</code></pre>
+<h2 id="togglemod"><a href="#togglemod" class="anchor"></a>toggleMod</h2><pre><code class="lang-js"><span class="hljs-keyword">var</span> $b = $(<span class="hljs-string">'.block_hidden'</span>);
+
+<span class="hljs-comment">// .block_hidden =&gt; .block</span>
+$b.toggleMod(<span class="hljs-string">'hidden'</span>);
+
+<span class="hljs-comment">// .block =&gt; .block_hidden</span>
+$b.toggleMod(<span class="hljs-string">'hidden'</span>);
+</code></pre>
+</div>
+        </div>
+      
+      
+      </div>
+    
+    </div>
+  </div>
+
+  <script src="toc.js"></script>
+  <script src="assets/libs.js"></script>
+  <script src="assets/behavior.js"></script>
+</body>
+</html>

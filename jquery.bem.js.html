@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> - jquery.bem.js</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+  <meta name="groc-relative-root" content=""/>
+  <meta name="groc-document-path" content="jquery.bem.js"/>
+  
+</head>
+<body>
+  <div id="file-area">
+    <div id="meta">
+      <code class="file-path">
+      
+        jquery.bem.js
+      
+      </code>
+    </div>
+    <div id="document">
+    
+      <div class="segment">
+      
+      
+        <div class="code"><div class="wrapper">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($, undefined)</span> {</span>
+
+    <span class="hljs-keyword">var</span> MOD_DLMTR = <span class="hljs-string">'_'</span>;
+</div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Sets modifier for each element in collection</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>mod</code> must be a String.</strong><br/>(modifier or block`s filter with modifier)</li>
+<li><strong><code>value</code> must be a String.</strong><br/>(unnecessary value of the modifier)</li>
+</ul>
+<p><strong>Returns a jQuery</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">    $.fn.setMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            $(<span class="hljs-keyword">this</span>).addClass(getBlocksClassesOnNode.call(<span class="hljs-keyword">this</span>, mod, value).join(<span class="hljs-string">' '</span>));
+        });
+    }
+</div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Removes modifier for each element in collection</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>mod</code> must be a String.</strong><br/>(modifier or block`s filter with modifier)</li>
+<li><strong><code>value</code> must be a String.</strong><br/>(unnecessary value of modifier)</li>
+</ul>
+<p><strong>Returns a jQuery</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">    $.fn.delMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            $(<span class="hljs-keyword">this</span>).removeClass(getBlocksClassesOnNode.call(<span class="hljs-keyword">this</span>, mod, value).join(<span class="hljs-string">' '</span>));
+        });
+    }
+</div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Check modifier`s presence for the first element in collection</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>mod</code> must be a String.</strong><br/>(modifier or block`s filter with modifier)</li>
+<li><strong><code>value</code> must be a String.</strong><br/>(unnecessary value of modifier)</li>
+</ul>
+<p><strong>Returns a Boolean</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">    $.fn.hasMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hasClass(getBlocksClassesOnNode.call(<span class="hljs-keyword">this</span>, mod, value).join(<span class="hljs-string">''</span>));
+    }
+</div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Toggles modifier for each element in collection</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>mod</code> must be a String.</strong><br/>(modifier or block`s filter with modifier)</li>
+<li><strong><code>value</code> must be a String.</strong><br/>(unnecessary value of modifier)</li>
+</ul>
+<p><strong>Returns a jQuery</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">    $.fn.toggleMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">var</span> $node = $(<span class="hljs-keyword">this</span>);
+
+            <span class="hljs-keyword">if</span> ($node.hasMod(mod, value)) {
+                $node.delMod(mod, value);
+            } <span class="hljs-keyword">else</span> {
+                $node.setMod(mod, value);
+            }
+        });
+    }
+</div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Returns block`s classes specified on a node
+Warning: this should refer to the node</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>mod</code> must be a String.</strong><br/>(modifier or block`s filter with modifier)</li>
+<li><strong><code>value</code> must be a String.</strong><br/>(unnecessary value of modifier)</li>
+</ul>
+<p><strong>Returns an Array</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBlocksClassesOnNode</span><span class="hljs-params">(mod, value)</span> {</span>
+        <span class="hljs-keyword">var</span> $node = $(<span class="hljs-keyword">this</span>);
+        <span class="hljs-keyword">var</span> blockByFilter = getIdBlockByFilter(mod);
+        <span class="hljs-keyword">var</span> classes = (blockByFilter)
+                        ? [blockByFilter]
+                        : $node.attr(<span class="hljs-string">'class'</span>).split(<span class="hljs-string">' '</span>);
+
+        <span class="hljs-keyword">if</span> (blockByFilter) {
+            mod = mod.split(<span class="hljs-string">':'</span>)[<span class="hljs-number">1</span>];
+        }
+
+        <span class="hljs-keyword">return</span> classes.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item)</span> {</span></div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><p>js, is, _ prefixed classes shouldn&#39;t be processed</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^(js-|is-|_)\w+/</span>.test(item)) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            }
+</div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><p>we don&#39;t need to set mod twice
+FIXME: /<em>(?!</em>)[a-zA-Z0-9-]+$/ doesn&#39;t work, why?</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/_[a-zA-Z0-9-]+$/</span>.test(item.split(<span class="hljs-string">'__'</span>).pop())) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            }
+
+            <span class="hljs-keyword">var</span> clazz = item + MOD_DLMTR + mod;
+            <span class="hljs-keyword">if</span> (value) {
+                clazz += MOD_DLMTR + value;
+            }
+            <span class="hljs-keyword">return</span> clazz;
+        }).filter(<span class="hljs-built_in">Boolean</span>);
+    }
+</div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Returns block`s name parsed from filter
+or false if there&#39;s no match</p>
+<p><strong>Returns a String or a Boolean</strong><br/>(block`s name or false)</p>
+<p>Example:</p>
+<p>// =&gt; block
+getIdBlockByFilter(&#39;block:mod&#39;);</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIdBlockByFilter</span><span class="hljs-params">(filter)</span> {</span>
+        <span class="hljs-keyword">var</span> matches = filter.match(<span class="hljs-regexp">/([a-zA-Z0-9-]+):/</span>);
+
+        <span class="hljs-keyword">if</span> (matches) {
+            <span class="hljs-keyword">return</span> matches[<span class="hljs-number">1</span>];
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+
+}(jQuery, <span class="hljs-literal">undefined</span>));</div></div>
+      
+      </div>
+    
+    </div>
+  </div>
+
+  <script src="toc.js"></script>
+  <script src="assets/libs.js"></script>
+  <script src="assets/behavior.js"></script>
+</body>
+</html>

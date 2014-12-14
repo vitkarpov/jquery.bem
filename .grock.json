@@ -1,9 +1,0 @@
-{
-  "glob": [
-    "*.md",
-    "jquery.bem.js"
-  ],
-  "out": ".",
-  "index": "README.md",
-  "github": true
-}
