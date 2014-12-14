@@ -44,6 +44,13 @@ window.files = [
   "originalPath": "jquery.bem.js",
   "name": "jquery.bem.js.html",
   "lang": "javascript",
-  "toc": []
+  "title": "jQuery.BEM: helps to work with BEM entities",
+  "toc": [
+    {
+      "level": 1,
+      "slug": "jquery-bem-helps-to-work-with-bem-entities",
+      "title": "jQuery.BEM: helps to work with BEM entities"
+    }
+  ]
 }
 ];
