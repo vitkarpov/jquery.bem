@@ -1,76 +1,9 @@
 # jQuery.BEM: helps to work with BEM entities
 
-## Intro
+With jQuery BEM you can interact with BEM Tree: set, remove, get and check modifiers.
 
-Let there's DOM Tree:
-
-```html
-<div class="block1">
-    <div class="block1__element1">
-        hello
-    </div>
-    <div class="block1__element2">
-        <div class="block2">
-            <div class="block2__element1">
-                world
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-On top of it there's BEM Tree:
-
-
-```json
-{
-    "block": "block1",
-    "content": [
-        {
-            "element": "element1",
-            "content": "hello"
-        },
-        {
-            "element": "element2",
-            "content": {
-                "block": "block2",
-                "content": {
-                    "element": "element1",
-                    "content": "world"
-                }
-            }
-        }
-    ]
-}
-
-```
-
-With jQuery BEM you can interact with BEM Tree using usual jQuery.
-
-For instance,
-
-```js
-var $b = $('.block1');
-
-// .block1 => .block1_hidden
-$b.setMod('hidden');
-```
-
-```js
-var $el = $('.block1__element1');
-
-// .block1_type_war
-$el.setMod('type', 'war');
-
-// false
-$el.hasMod('type', 'peace')
-
-// true
-$el.hasMod('type')
-
-// war
-$el.getMod('type');
-```
+[http://jsfiddle.net/vitkarpov/ouLr0ctw/](http://jsfiddle.net/vitkarpov/ouLr0ctw/)
+![https://yadi.sk/i/zbyoEHKQdMpj8](https://yadi.sk/i/zbyoEHKQdMpj8_XXL.jpg)
 
 ## API
 
