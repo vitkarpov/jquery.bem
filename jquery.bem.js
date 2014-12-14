@@ -42,7 +42,7 @@
     }
 
     /**
-     * Check modifier`s presence for the first element in collection
+     * Checks modifier`s presence for the first element in collection
      *
      * @param  {String} mod   modifier or block`s filter with modifier
      * @param  {String} value unnecessary value of modifier
@@ -75,6 +75,19 @@
      * Returns block`s classes specified on a node
      * ```md
      * Warning: `this` inside function should refer to the node
+     * ```
+     * @example
+     * ```
+     * // node.classList = ['block1', 'block2'];
+     *
+     * // block1_mod block2_mod
+     * getBlocksClassesOnNode.call(node, 'mod')
+     *
+     * // block1_mod_value block2_mod_value
+     * getBlocksClassesOnNode.call(node, 'mod', 'value')
+     *
+     * // block1_mod
+     * getBlocksClassesOnNode.call(node, 'block1:mod')
      * ```
      *
      * @param  {String} mod   modifier or block`s filter with modifier
