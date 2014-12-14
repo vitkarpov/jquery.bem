@@ -12,7 +12,7 @@
     "jquery"
   ],
   "devDependencies": {
-    "grock": "0.3.x"
+    "grock": "git://github.com/vitkarpov/grock.git#postprocess-feature"
   },
   "scripts": {
     "docs": "./node_modules/.bin/grock"

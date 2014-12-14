@@ -3,6 +3,7 @@
     "*.md",
     "jquery.bem.js"
   ],
+  "append": "docs/metrika.js",
   "style": "thin",
   "out": ".",
   "index": "README.md",
