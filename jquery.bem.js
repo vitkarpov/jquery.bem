@@ -1,5 +1,5 @@
 /**
- * # jQuery.BEM: helps to work with BEM entities
+ * # Source code with comments
  *
  * @copyright Viktor Karpov <viktor.s.karpov@gmail.com>
  */
