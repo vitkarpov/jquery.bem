@@ -3,6 +3,7 @@
     "*.md",
     "jquery.bem.js"
   ],
+  "style": "thin",
   "out": ".",
   "index": "README.md",
   "github": true
