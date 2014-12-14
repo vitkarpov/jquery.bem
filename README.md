@@ -124,12 +124,10 @@ $el.hasMod('block1:mod');
 ## toggleMod
 
 ```js
-var $b1 = $('.block_hidden');
+var $b = $('.block_hidden');
 
 // .block_hidden => .block
 $b.toggleMod('hidden');
-
-var $b2 = $('.block');
 
 // .block => .block_hidden
 $b.toggleMod('hidden');
