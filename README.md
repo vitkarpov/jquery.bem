@@ -3,7 +3,7 @@
 With jQuery BEM you can interact with BEM Tree: set, remove and check modifiers.
 
 [http://jsfiddle.net/vitkarpov/ouLr0ctw/](http://jsfiddle.net/vitkarpov/ouLr0ctw/)
-![https://yadi.sk/i/zbyoEHKQdMpj8](https://yadi.sk/i/zbyoEHKQdMpj8_XXL.jpg)
+![https://yadi.sk/i/zbyoEHKQdMpj8](https://camo.githubusercontent.com/dbc02419206effb6641d8badace0ddecaad273da/68747470733a2f2f796164692e736b2f692f7a62796f45484b51644d706a385f58584c2e6a7067)
 
 ## API
 
