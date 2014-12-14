@@ -1,9 +1,15 @@
+/**
+ * # jQuery.BEM: helps to work with BEM entities
+ *
+ * @copyright Viktor Karpov <viktor.s.karpov@gmail.com>
+ */
+
 (function ($, undefined) {
 
     /**
      * Delimiter for modifier.
      * ```md
-     * >Use classic notification block__element_modifier_value
+     * Use classic notification block__element_modifier_value
      * ```
      * @type {String}
      */
@@ -68,7 +74,7 @@
     /**
      * Returns block`s classes specified on a node
      * ```md
-     * >Warning: `this` inside function should refer to the node
+     * Warning: `this` inside function should refer to the node
      * ```
      *
      * @param  {String} mod   modifier or block`s filter with modifier
@@ -94,7 +100,7 @@
 
             // we don't need to set mod twice
             // ```md
-            // >**TODO**: /_(?!_)[a-zA-Z0-9-]+$/ doesn't work, why?
+            // **TODO**: /_(?!_)[a-zA-Z0-9-]+$/ doesn't work, why?
             // ```
             if (/_[a-zA-Z0-9-]+$/.test(item.split('__').pop())) {
                 return false;
