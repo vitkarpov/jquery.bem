@@ -1,5 +1,12 @@
 (function ($, undefined) {
 
+    /**
+     * Delimiter for modifier.
+     * ```md
+     * >Use classic notification block__element_modifier_value
+     * ```
+     * @type {String}
+     */
     var MOD_DLMTR = '_';
 
     /**
@@ -60,7 +67,9 @@
 
     /**
      * Returns block`s classes specified on a node
-     * Warning: this should refer to the node
+     * ```md
+     * >Warning: `this` inside function should refer to the node
+     * ```
      *
      * @param  {String} mod   modifier or block`s filter with modifier
      * @param  {String} value unnecessary value of modifier
@@ -78,13 +87,15 @@
         }
 
         return classes.map(function(item) {
-            // js, is, _ prefixed classes shouldn't be processed
+            // `js-`, `is-` and `_` prefixed classes shouldn't be processed
             if (/^(js-|is-|_)\w+/.test(item)) {
                 return false;
             }
 
             // we don't need to set mod twice
-            // FIXME: /_(?!_)[a-zA-Z0-9-]+$/ doesn't work, why?
+            // ```md
+            // >**TODO**: /_(?!_)[a-zA-Z0-9-]+$/ doesn't work, why?
+            // ```
             if (/_[a-zA-Z0-9-]+$/.test(item.split('__').pop())) {
                 return false;
             }
@@ -102,8 +113,10 @@
      * or false if there's no match
      *
      * @example
-     * // => block
+     * ```js
+     * // block
      * getIdBlockByFilter('block:mod');
+     * ```
      *
      * @return {String|Boolean} block`s name or false
      */
