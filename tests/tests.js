@@ -117,12 +117,31 @@ describe('jQuery.BEM', function() {
     describe('hasMod', function() {
         beforeEach(function() {
             this.$b1.setMod('mod');
-            this.$b2.setMod('mod', 'val');
+            this.$b2.setMod('block2:mod', 'val');
         });
 
-        it('should check mod existence', function() {
+        it('should check mod', function() {
             expect(this.$b1.hasMod('mod')).toBeTruthy();
-            expect(this.$b2.hasMod('mod')).toBeTruthy();
+        });
+
+        it('should check mod for specific block chosen by filter', function() {
+            expect(this.$b2.hasMod('block2:mod', 'val')).toBeTruthy();
+        });
+    });
+
+    describe('toggleMod', function() {
+        beforeEach(function() {
+            this.$b1.toggleMod('mod');
+        });
+
+        it('should set mod if it`s has not been set yet', function() {
+            expect(this.$b1.hasClass('block1_mod')).toBeTruthy();
+        });
+
+        it('should remove mod if it`s has been set already', function() {
+            expect(
+                this.$b1.toggleMod('mod').hasClass('block1_mod')
+            ).toBeFalsy();
         });
     });
 });

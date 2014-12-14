@@ -18,8 +18,8 @@
     /**
      * Removes modifier for each element in collection
      *
-     * @param  {[type]} mod   modifier or block`s filter with modifier
-     * @param  {[type]} value unnecessary value of modifier
+     * @param  {String} mod   modifier or block`s filter with modifier
+     * @param  {String} value unnecessary value of modifier
      * @return {jQuery}
      */
     $.fn.delMod = function(mod, value) {
@@ -29,11 +29,41 @@
     }
 
     /**
+     * Check modifier`s presence for the first element in collection
+     *
+     * @param  {String} mod   modifier or block`s filter with modifier
+     * @param  {String} value unnecessary value of modifier
+     * @return {Boolean}
+     */
+    $.fn.hasMod = function(mod, value) {
+        return this.hasClass(getBlocksClassesOnNode.call(this, mod, value).join(''));
+    }
+
+    /**
+     * Toggles modifier for each element in collection
+     *
+     * @param  {String} mod   modifier or block`s filter with modifier
+     * @param  {String} value unnecessary value of modifier
+     * @return {jQuery}
+     */
+    $.fn.toggleMod = function(mod, value) {
+        return this.each(function() {
+            var $node = $(this);
+
+            if ($node.hasMod(mod, value)) {
+                $node.delMod(mod, value);
+            } else {
+                $node.setMod(mod, value);
+            }
+        });
+    }
+
+    /**
      * Returns block`s classes specified on a node
      * Warning: this should refer to the node
      *
-     * @param  {[type]} mod   modifier or block`s filter with modifier
-     * @param  {[type]} value unnecessary value of modifier
+     * @param  {String} mod   modifier or block`s filter with modifier
+     * @param  {String} value unnecessary value of modifier
      * @return {Array}
      */
     function getBlocksClassesOnNode(mod, value) {
@@ -50,7 +80,13 @@
         return classes.map(function(item) {
             // js, is, _ prefixed classes shouldn't be processed
             if (/^(js-|is-|_)\w+/.test(item)) {
-                return '';
+                return false;
+            }
+
+            // we don't need to set mod twice
+            // FIXME: /_(?!_)[a-zA-Z0-9-]+$/ doesn't work, why?
+            if (/_[a-zA-Z0-9-]+$/.test(item.split('__').pop())) {
+                return false;
             }
 
             var clazz = item + MOD_DLMTR + mod;
@@ -58,7 +94,7 @@
                 clazz += MOD_DLMTR + value;
             }
             return clazz;
-        });
+        }).filter(Boolean);
     }
 
     /**
