@@ -1,6 +1,6 @@
 # jQuery.BEM: helps to work with BEM entities
 
-With jQuery BEM you can interact with BEM Tree: set, remove, get and check modifiers.
+With jQuery BEM you can interact with BEM Tree: set, remove and check modifiers.
 
 [http://jsfiddle.net/vitkarpov/ouLr0ctw/](http://jsfiddle.net/vitkarpov/ouLr0ctw/)
 ![https://yadi.sk/i/zbyoEHKQdMpj8](https://yadi.sk/i/zbyoEHKQdMpj8_XXL.jpg)
@@ -121,44 +121,17 @@ $el.hasMod('mod');
 $el.hasMod('block1:mod');
 ```
 
-## getMod
+## toggleMod
 
 ```js
-var $b = $('.block1');
+var $b1 = $('.block_hidden');
 
-$b.setMod('color', 'red');
+// .block_hidden => .block
+$b.toggleMod('hidden');
 
-// red
-$b.getMod('color');
+var $b2 = $('.block');
 
-// color
-$b.getMod();
+// .block => .block_hidden
+$b.toggleMod('hidden');
 ```
 
-```js
-var $b = ('.block1 .block2');
-
-// .block1_mod
-$b.setMod('block1:mod1');
-
-// mod1
-$b.getMod('block1');
-
-// null
-$b.getMod('block2:mod1');
-```
-
-```js
-var $b = $('.block1 .block2');
-
-$b.setMod('block1:color', 'green');
-
-// null
-$b.getMod('block2:color');
-
-// null
-$b.getMod('block1:visibility');
-
-// green
-$b.getMod('block1:color');
-```
