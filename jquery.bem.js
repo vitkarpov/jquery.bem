@@ -24,7 +24,7 @@
      */
     $.fn.setMod = function(mod, value) {
         return this.each(function() {
-            $(this).addClass(getBlocksClassesOnNode.call(this, mod, value).join(' '));
+            $(this).addClass(_buildClassesAccordingToMod.call(this, mod, value).join(' '));
         });
     }
 
@@ -37,7 +37,7 @@
      */
     $.fn.delMod = function(mod, value) {
         return this.each(function() {
-            $(this).removeClass(getBlocksClassesOnNode.call(this, mod, value).join(' '));
+            $(this).removeClass(_buildClassesAccordingToMod.call(this, mod, value).join(' '));
         });
     }
 
@@ -49,7 +49,7 @@
      * @return {Boolean}
      */
     $.fn.hasMod = function(mod, value) {
-        return this.hasClass(getBlocksClassesOnNode.call(this, mod, value).join(''));
+        return this.hasClass(_buildClassesAccordingToMod.call(this, mod, value).join(''));
     }
 
     /**
@@ -81,22 +81,24 @@
      * // node.classList = ['block1', 'block2'];
      *
      * // block1_mod block2_mod
-     * getBlocksClassesOnNode.call(node, 'mod')
+     * _buildClassesAccordingToMod.call(node, 'mod')
      *
      * // block1_mod_value block2_mod_value
-     * getBlocksClassesOnNode.call(node, 'mod', 'value')
+     * _buildClassesAccordingToMod.call(node, 'mod', 'value')
      *
      * // block1_mod
-     * getBlocksClassesOnNode.call(node, 'block1:mod')
+     * _buildClassesAccordingToMod.call(node, 'block1:mod')
      * ```
      *
+     * @private
+     * 
      * @param  {String} mod   modifier or block`s filter with modifier
      * @param  {String} value unnecessary value of modifier
      * @return {Array}
      */
-    function getBlocksClassesOnNode(mod, value) {
+    function _buildClassesAccordingToMod(mod, value) {
         var $node = $(this);
-        var blockByFilter = getIdBlockByFilter(mod);
+        var blockByFilter = _getIdBlockByFilter(mod);
         var classes = (blockByFilter)
                         ? [blockByFilter]
                         : $node.attr('class').split(' ');
@@ -134,12 +136,14 @@
      * @example
      * ```js
      * // block
-     * getIdBlockByFilter('block:mod');
+     * _getIdBlockByFilter('block:mod');
      * ```
+     *
+     * @private
      *
      * @return {String|Boolean} block`s name or false
      */
-    function getIdBlockByFilter(filter) {
+    function _getIdBlockByFilter(filter) {
         var matches = filter.match(/([a-zA-Z0-9-]+):/);
 
         if (matches) {
