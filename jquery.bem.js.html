@@ -26,8 +26,23 @@
       
       
         <div class="code"><div class="wrapper">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($, undefined)</span> {</span>
-
-    <span class="hljs-keyword">var</span> MOD_DLMTR = <span class="hljs-string">'_'</span>;
+</div></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p><span class='doc-section-header'>
+ of type <em>String</em>
+</span></p>
+<p>Delimiter for modifier. \n
+Use classic notification block__element_modifier_value</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><div class="wrapper">    <span class="hljs-keyword">var</span> MOD_DLMTR = <span class="hljs-string">'_'</span>;
 </div></div>
       
       </div>
@@ -131,8 +146,8 @@
       <div class="segment">
       
         <div class="comments doc-section">
-          <div class="wrapper"><p>Returns block`s classes specified on a node
-Warning: this should refer to the node</p>
+          <div class="wrapper"><p>Returns block<code>s classes specified on a node \n
+Warning:</code>this` inside function should refer to the node</p>
 <p>Parameters:</p>
 <ul>
 <li><strong><code>mod</code> must be a String.</strong><br/>(modifier or block`s filter with modifier)</li>
@@ -161,7 +176,7 @@ Warning: this should refer to the node</p>
       <div class="segment">
       
         <div class="comments ">
-          <div class="wrapper"><p>js, is, _ prefixed classes shouldn&#39;t be processed</p>
+          <div class="wrapper"><p><code>js-</code>, <code>is-</code> and <code>_</code> prefixed classes shouldn&#39;t be processed</p>
 </div>
         </div>
       
@@ -176,8 +191,8 @@ Warning: this should refer to the node</p>
       <div class="segment">
       
         <div class="comments ">
-          <div class="wrapper"><p>we don&#39;t need to set mod twice
-FIXME: /<em>(?!</em>)[a-zA-Z0-9-]+$/ doesn&#39;t work, why?</p>
+          <div class="wrapper"><p>we don&#39;t need to set mod twice \n
+TODO: /<em>(?!</em>)[a-zA-Z0-9-]+$/ doesn&#39;t work, why?</p>
 </div>
         </div>
       
@@ -204,8 +219,9 @@ FIXME: /<em>(?!</em>)[a-zA-Z0-9-]+$/ doesn&#39;t work, why?</p>
 or false if there&#39;s no match</p>
 <p><strong>Returns a String or a Boolean</strong><br/>(block`s name or false)</p>
 <p>Example:</p>
-<p>// =&gt; block
-getIdBlockByFilter(&#39;block:mod&#39;);</p>
+<pre><code class="lang-js"><span class="hljs-comment">// block</span>
+getIdBlockByFilter(<span class="hljs-string">'block:mod'</span>);
+</code></pre>
 </div>
         </div>
       
