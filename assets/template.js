@@ -42,9 +42,9 @@ __e( segment.accessClasses ) +
  } ;
 __p += '\n      ';
  if (segment.code != '') { ;
-__p += '\n        <div class="code"><div class="wrapper">' +
+__p += '\n        <div class="code"><pre class="wrapper">' +
 ((__t = ( segment.code )) == null ? '' : __t) +
-'</div></div>\n      ';
+'</pre></div>\n      ';
  } ;
 __p += '\n      </div>\n    ';
  }) ;

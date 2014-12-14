@@ -26,14 +26,14 @@
       
         <div class="comments doc-section">
           <div class="wrapper"><p><span class='doc-section-header'>
- &copy; Viktor Karpov <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#118;&#105;&#x6b;&#x74;&#x6f;&#114;&#x2e;&#x73;&#x2e;&#107;&#97;&#114;&#112;&#111;&#x76;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#118;&#105;&#x6b;&#x74;&#x6f;&#114;&#x2e;&#x73;&#x2e;&#107;&#97;&#114;&#112;&#111;&#x76;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a>
+ &copy; Viktor Karpov <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#118;&#x69;&#107;&#x74;&#111;&#114;&#x2e;&#x73;&#46;&#107;&#97;&#114;&#x70;&#x6f;&#118;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#118;&#x69;&#107;&#x74;&#111;&#114;&#x2e;&#x73;&#46;&#107;&#97;&#114;&#x70;&#x6f;&#118;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a>
 </span></p>
 <h1 id="source-code-with-comments"><a href="#source-code-with-comments" class="anchor"></a>Source code with comments</h1></div>
         </div>
       
       
-        <div class="code"><div class="wrapper">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($, undefined)</span> {</span>
-</div></div>
+        <div class="code"><pre class="wrapper">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($, undefined)</span> {</span>
+</pre></div>
       
       </div>
     
@@ -50,8 +50,8 @@
         </div>
       
       
-        <div class="code"><div class="wrapper">    <span class="hljs-keyword">var</span> MOD_DLMTR = <span class="hljs-string">'_'</span>;
-</div></div>
+        <div class="code"><pre class="wrapper">    <span class="hljs-keyword">var</span> MOD_DLMTR = <span class="hljs-string">'_'</span>;
+</pre></div>
       
       </div>
     
@@ -69,12 +69,12 @@
         </div>
       
       
-        <div class="code"><div class="wrapper">    $.fn.setMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
+        <div class="code"><pre class="wrapper">    $.fn.setMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
             $(<span class="hljs-keyword">this</span>).addClass(_buildClassesAccordingToMod.call(<span class="hljs-keyword">this</span>, mod, value).join(<span class="hljs-string">' '</span>));
         });
     }
-</div></div>
+</pre></div>
       
       </div>
     
@@ -92,12 +92,12 @@
         </div>
       
       
-        <div class="code"><div class="wrapper">    $.fn.delMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
+        <div class="code"><pre class="wrapper">    $.fn.delMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
             $(<span class="hljs-keyword">this</span>).removeClass(_buildClassesAccordingToMod.call(<span class="hljs-keyword">this</span>, mod, value).join(<span class="hljs-string">' '</span>));
         });
     }
-</div></div>
+</pre></div>
       
       </div>
     
@@ -115,10 +115,10 @@
         </div>
       
       
-        <div class="code"><div class="wrapper">    $.fn.hasMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
+        <div class="code"><pre class="wrapper">    $.fn.hasMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hasClass(_buildClassesAccordingToMod.call(<span class="hljs-keyword">this</span>, mod, value).join(<span class="hljs-string">''</span>));
     }
-</div></div>
+</pre></div>
       
       </div>
     
@@ -136,7 +136,7 @@
         </div>
       
       
-        <div class="code"><div class="wrapper">    $.fn.toggleMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
+        <div class="code"><pre class="wrapper">    $.fn.toggleMod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mod, value)</span> {</span>
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
             <span class="hljs-keyword">var</span> $node = $(<span class="hljs-keyword">this</span>);
 
@@ -147,7 +147,7 @@
             }
         });
     }
-</div></div>
+</pre></div>
       
       </div>
     
@@ -181,7 +181,7 @@ _buildClassesAccordingToMod.call(node, <span class="hljs-string">'block1:mod'</s
         </div>
       
       
-        <div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_buildClassesAccordingToMod</span><span class="hljs-params">(mod, value)</span> {</span>
+        <div class="code"><pre class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_buildClassesAccordingToMod</span><span class="hljs-params">(mod, value)</span> {</span>
         <span class="hljs-keyword">var</span> $node = $(<span class="hljs-keyword">this</span>);
         <span class="hljs-keyword">var</span> blockByFilter = _getIdBlockByFilter(mod);
         <span class="hljs-keyword">var</span> classes = (blockByFilter)
@@ -192,7 +192,7 @@ _buildClassesAccordingToMod.call(node, <span class="hljs-string">'block1:mod'</s
             mod = mod.split(<span class="hljs-string">':'</span>)[<span class="hljs-number">1</span>];
         }
 
-        <span class="hljs-keyword">return</span> classes.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item)</span> {</span></div></div>
+        <span class="hljs-keyword">return</span> classes.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item)</span> {</span></pre></div>
       
       </div>
     
@@ -204,10 +204,10 @@ _buildClassesAccordingToMod.call(node, <span class="hljs-string">'block1:mod'</s
         </div>
       
       
-        <div class="code"><div class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^(js-|is-|_)\w+/</span>.test(item)) {
+        <div class="code"><pre class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^(js-|is-|_)\w+/</span>.test(item)) {
                 <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
             }
-</div></div>
+</pre></div>
       
       </div>
     
@@ -221,7 +221,7 @@ _buildClassesAccordingToMod.call(node, <span class="hljs-string">'block1:mod'</s
         </div>
       
       
-        <div class="code"><div class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/_[a-zA-Z0-9-]+$/</span>.test(item.split(<span class="hljs-string">'__'</span>).pop())) {
+        <div class="code"><pre class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/_[a-zA-Z0-9-]+$/</span>.test(item.split(<span class="hljs-string">'__'</span>).pop())) {
                 <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
             }
 
@@ -232,7 +232,7 @@ _buildClassesAccordingToMod.call(node, <span class="hljs-string">'block1:mod'</s
             <span class="hljs-keyword">return</span> clazz;
         }).filter(<span class="hljs-built_in">Boolean</span>);
     }
-</div></div>
+</pre></div>
       
       </div>
     
@@ -253,7 +253,7 @@ _getIdBlockByFilter(<span class="hljs-string">'block:mod'</span>);
         </div>
       
       
-        <div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_getIdBlockByFilter</span><span class="hljs-params">(filter)</span> {</span>
+        <div class="code"><pre class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_getIdBlockByFilter</span><span class="hljs-params">(filter)</span> {</span>
         <span class="hljs-keyword">var</span> matches = filter.match(<span class="hljs-regexp">/([a-zA-Z0-9-]+):/</span>);
 
         <span class="hljs-keyword">if</span> (matches) {
@@ -262,7 +262,7 @@ _getIdBlockByFilter(<span class="hljs-string">'block:mod'</span>);
         <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
 
-}(jQuery, <span class="hljs-literal">undefined</span>));</div></div>
+}(jQuery, <span class="hljs-literal">undefined</span>));</pre></div>
       
       </div>
     
