@@ -3,7 +3,7 @@
 jQuery.BEM helps to work with BEM entities. You can interact with [BEM Tree](http://bem.info/method/definitions/): set, remove and check modifiers.
 
 [http://jsfiddle.net/vitkarpov/ouLr0ctw/](http://jsfiddle.net/vitkarpov/ouLr0ctw/)
-![https://yadi.sk/i/zbyoEHKQdMpj8](https://raw.githubusercontent.com/vitkarpov/jquery.bem/master/docs/usage-example.gif)
+![https://yadi.sk/i/zbyoEHKQdMpj8](/images/example.gif)
 
 ## API
 
