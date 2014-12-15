@@ -3,7 +3,7 @@
     "*.md",
     "jquery.bem.js"
   ],
-  "ext-scripts": ["docs/metrika.js"],
+  "append": "docs/metrika.js",
   "style": "thin",
   "out": ".",
   "index": "README.md",
