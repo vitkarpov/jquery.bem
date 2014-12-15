@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>Source code with comments - jquery.bem.js</title>
 
+  <link rel="stylesheet" href="assets/style.css">
   
     
   
-  <link rel="stylesheet" href="assets/style.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
   <meta name="groc-relative-root" content=""/>
@@ -29,7 +29,7 @@
       
         <div class="comments doc-section">
           <div class="wrapper"><p><span class='doc-section-header'>
- &copy; Viktor Karpov <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#58;&#x76;&#x69;&#107;&#x74;&#x6f;&#x72;&#46;&#x73;&#x2e;&#107;&#x61;&#x72;&#112;&#111;&#118;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x76;&#x69;&#107;&#x74;&#x6f;&#x72;&#46;&#x73;&#x2e;&#107;&#x61;&#x72;&#112;&#111;&#118;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a>
+ &copy; Viktor Karpov <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x76;&#x69;&#x6b;&#116;&#x6f;&#114;&#x2e;&#x73;&#x2e;&#x6b;&#x61;&#x72;&#x70;&#111;&#x76;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#x76;&#x69;&#x6b;&#116;&#x6f;&#114;&#x2e;&#x73;&#x2e;&#x6b;&#x61;&#x72;&#x70;&#111;&#x76;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a>
 </span></p>
 <h1 id="source-code-with-comments"><a href="#source-code-with-comments" class="anchor"></a>Source code with comments</h1></div>
         </div>
@@ -272,13 +272,36 @@ _getIdBlockByFilter(<span class="hljs-string">'block:mod'</span>);
     </div>
   </div>
 
-  
-    
-      <script src="docs/metrika.js"></script>
-    
-  
   <script src="toc.js"></script>
   <script src="assets/libs.js"></script>
   <script src="assets/behavior.js"></script>
+
+  
+    
+      <script>
+        (function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21389509 = new Ya.Metrika({id:21389509,
+                    webvisor:true,
+                    clickmap:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+      </script>
+    
+  
 </body>
 </html>

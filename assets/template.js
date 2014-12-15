@@ -6,21 +6,19 @@ __p += '<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <
 ((__t = ( data.pageHeadline )) == null ? '' : __t) +
 ' - ' +
 __e( data.pageTitle ) +
-'</title>\n\n  ';
+'</title>\n\n  <link rel="stylesheet" href="' +
+__e( data.relativeRoot ) +
+'assets/style.css">\n  ';
  if (data.externals && data.externals.styles) { ;
 __p += '\n    ';
- data.externals.styles.forEach(function(path) { ;
-__p += '\n      <link rel="stylesheet" href="' +
-((__t = ( data.relativeRoot )) == null ? '' : __t) +
-'' +
-((__t = ( path )) == null ? '' : __t) +
-'">\n    ';
+ data.externals.styles.forEach(function(content) { ;
+__p += '\n      <style>\n        ' +
+((__t = ( content )) == null ? '' : __t) +
+'\n      </style>\n    ';
  }) ;
 __p += '\n  ';
  } ;
-__p += '\n  <link rel="stylesheet" href="' +
-__e( data.relativeRoot ) +
-'assets/style.css">\n\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>\n  <meta name="groc-relative-root" content="' +
+__p += '\n\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>\n  <meta name="groc-relative-root" content="' +
 __e( data.relativeRoot ) +
 '"/>\n  <meta name="groc-document-path" content="' +
 __e( data.targetPath ) +
@@ -60,24 +58,22 @@ __p += '\n        <div class="code"><pre class="wrapper">' +
  } ;
 __p += '\n      </div>\n    ';
  }) ;
-__p += '\n    </div>\n  </div>\n\n  ';
- if (data.externals && data.externals.scripts) { ;
-__p += '\n    ';
- data.externals.scripts.forEach(function(path) { ;
-__p += '\n      <script src="' +
-((__t = ( data.relativeRoot )) == null ? '' : __t) +
-'' +
-((__t = ( path )) == null ? '' : __t) +
-'"></script>\n    ';
- }) ;
-__p += '\n  ';
- } ;
-__p += '\n  <script src="' +
+__p += '\n    </div>\n  </div>\n\n  <script src="' +
 __e( data.relativeRoot ) +
 'toc.js"></script>\n  <script src="' +
 __e( data.relativeRoot ) +
 'assets/libs.js"></script>\n  <script src="' +
 __e( data.relativeRoot ) +
-'assets/behavior.js"></script>\n</body>\n</html>';
+'assets/behavior.js"></script>\n\n  ';
+ if (data.externals && data.externals.scripts) { ;
+__p += '\n    ';
+ data.externals.scripts.forEach(function(content) { ;
+__p += '\n      <script>\n        ' +
+((__t = ( content )) == null ? '' : __t) +
+'\n      </script>\n    ';
+ }) ;
+__p += '\n  ';
+ } ;
+__p += '\n</body>\n</html>';
 return __p
 };

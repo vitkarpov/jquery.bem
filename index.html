@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>jQuery.BEM - README.md</title>
 
+  <link rel="stylesheet" href="assets/style.css">
   
     
   
-  <link rel="stylesheet" href="assets/style.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
   <meta name="groc-relative-root" content=""/>
@@ -30,7 +30,7 @@
         <div class="comments ">
           <div class="wrapper"><h1 id="jquery-bem"><a href="#jquery-bem" class="anchor"></a>jQuery.BEM</h1><p>jQuery.BEM helps to work with BEM entities. You can interact with <a href="http://bem.info/method/definitions/">BEM Tree</a>: set, remove and check modifiers.</p>
 <p><a href="http://jsfiddle.net/vitkarpov/ouLr0ctw/">http://jsfiddle.net/vitkarpov/ouLr0ctw/</a>
-<img src="/images/example.gif" alt="https://yadi.sk/i/zbyoEHKQdMpj8"></p>
+<img src="https://raw.githubusercontent.com/vitkarpov/jquery.bem/master/docs/usage-example.gif" alt="https://yadi.sk/i/zbyoEHKQdMpj8"></p>
 <h2 id="api"><a href="#api" class="anchor"></a>API</h2><h3 id="setmod"><a href="#setmod" class="anchor"></a>setMod</h3><pre><code class="lang-js"><span class="hljs-keyword">var</span> $b = $(<span class="hljs-string">'.block'</span>);
 
 <span class="hljs-comment">// .block_mod</span>
@@ -125,13 +125,36 @@ $b.toggleMod(<span class="hljs-string">'hidden'</span>);
     </div>
   </div>
 
-  
-    
-      <script src="docs/metrika.js"></script>
-    
-  
   <script src="toc.js"></script>
   <script src="assets/libs.js"></script>
   <script src="assets/behavior.js"></script>
+
+  
+    
+      <script>
+        (function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21389509 = new Ya.Metrika({id:21389509,
+                    webvisor:true,
+                    clickmap:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+      </script>
+    
+  
 </body>
 </html>
