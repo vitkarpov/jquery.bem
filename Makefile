@@ -7,4 +7,7 @@ install:
 test:
 	make build && grunt test
 
+docs:
+	npm run-script docs
+
 .PHONY: install build
