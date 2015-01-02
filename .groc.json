@@ -1,7 +1,7 @@
 {
   "glob": [
     "*.md",
-    "jquery.bem.js"
+    "lib/jquery.bem.js"
   ],
   "ext-scripts": ["docs/metrika.js"],
   "style": "thin",
