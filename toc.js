@@ -44,13 +44,6 @@ window.files = [
   "originalPath": "jquery.bem.js",
   "name": "jquery.bem.js.html",
   "lang": "javascript",
-  "title": "Source code with comments",
-  "toc": [
-    {
-      "level": 1,
-      "slug": "source-code-with-comments",
-      "title": "Source code with comments"
-    }
-  ]
+  "toc": []
 }
 ];

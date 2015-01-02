@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Source code with comments - jquery.bem.js</title>
+  <title> - jquery.bem.js</title>
 
   <link rel="stylesheet" href="assets/style.css">
   
@@ -27,15 +27,57 @@
     
       <div class="segment">
       
+      
+        <div class="code"><pre class="wrapper"><span class="hljs-comment">/*! v1.0.0 — 2015-01-02 */</span>
+
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(global)</span> {</span></pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
         <div class="comments doc-section">
           <div class="wrapper"><p><span class='doc-section-header'>
- &copy; Viktor Karpov <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x76;&#x69;&#x6b;&#116;&#x6f;&#114;&#x2e;&#x73;&#x2e;&#x6b;&#x61;&#x72;&#x70;&#111;&#x76;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#x76;&#x69;&#x6b;&#116;&#x6f;&#114;&#x2e;&#x73;&#x2e;&#x6b;&#x61;&#x72;&#x70;&#111;&#x76;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a>
+ enum String
 </span></p>
-<h1 id="source-code-with-comments"><a href="#source-code-with-comments" class="anchor"></a>Source code with comments</h1></div>
+<p>Enum for types of BEM entities.</p>
+</div>
         </div>
       
       
-        <div class="code"><pre class="wrapper">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($, undefined)</span> {</span>
+        <div class="code"><pre class="wrapper"><span class="hljs-keyword">var</span> TYPES = {
+    BLOCK:     <span class="hljs-string">'block'</span>,
+    BLOCK_MOD: <span class="hljs-string">'blockMod'</span>,
+    ELEM:      <span class="hljs-string">'elem'</span>,
+    ELEM_MOD:  <span class="hljs-string">'elemMod'</span>
+};
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p><span class='doc-section-header'>
+ name BEMNaming
+</span></p>
+<p>BEMNaming allows getting information about BEM entity using string as well as forming string
+representation based on BEM-naming.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>options</code> is optional and must be an Object.</strong><ul>
+<li><strong><code>options.elem</code> is optional, must be an Object, and has a default value of &#39;__&#39;.</strong><br/>(Separates element&#39;s name from block.)</li>
+<li><strong><code>options.mod</code> is optional, must be an Object, and has a default value of &#39;_&#39;.</strong><br/>(Separates names and values of modifiers from blocks and elements.)</li>
+<li><strong><code>options.wordPattern</code> is optional, must be an Object, and has a default value of &#39;[a-zA-Z0-9.</strong><br/>(+(?:-[a-zA-Z0-9]+)*] Defines which symbols can be used for block, element and modifier&#39;s names.)</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BEMNaming</span><span class="hljs-params">(options)</span> {</span>
+    options || (options = {});
 </pre></div>
       
       </div>
@@ -46,15 +88,329 @@
           <div class="wrapper"><p><span class='doc-section-header'>
  of type <em>String</em>
 </span></p>
-<p>Delimiter for modifier.</p>
-<pre><code class="lang-md">Use classic notification block__element_modifier_value
-</code></pre>
+<p>String to separate elem from block.</p>
 </div>
         </div>
       
       
-        <div class="code"><pre class="wrapper">    <span class="hljs-keyword">var</span> MOD_DLMTR = <span class="hljs-string">'_'</span>;
+        <div class="code"><pre class="wrapper">    <span class="hljs-keyword">this</span>.elemDelim = options.elem || options.elemSeparator || <span class="hljs-string">'__'</span>;</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p><span class='doc-section-header'>
+ of type <em>String</em>
+</span></p>
+<p>String to separate names and values of modifiers from blocks and elements.</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">    <span class="hljs-keyword">this</span>.modDelim = options.mod || options.modSeparator || <span class="hljs-string">'_'</span>;
+    <span class="hljs-keyword">this</span>._wordPattern = options.wordPattern || options.literal &amp;&amp; (options.literal + <span class="hljs-string">'+'</span>) ||
+        <span class="hljs-string">'[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*'</span>;
+
+    <span class="hljs-keyword">this</span>._buildRegex();
+}
 </pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Checks a string to be valid BEM notation.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>str</code> must be a String.</strong><br/>(String representation of BEM entity.)</li>
+</ul>
+<p><strong>Returns a Boolean</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">BEMNaming.prototype.validate = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(str)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._regex.test(str);
+};
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Returns a string indicating the type of the BEM entity.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>obj</code> can be an Object or a String.</strong><br/>(BEM-naming object or string representation of BEM entity.)</li>
+</ul>
+<p><strong>Returns a String</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">BEMNaming.prototype.typeOf = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> {</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> obj === <span class="hljs-string">'string'</span>) {
+        obj = <span class="hljs-keyword">this</span>.parse(obj);
+    }
+
+    <span class="hljs-keyword">if</span> (!obj || !obj.block) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-keyword">var</span> hasModVal = obj.hasOwnProperty(<span class="hljs-string">'modVal'</span>),
+        isMod = obj.modName &amp;&amp; (!hasModVal || obj.modVal);
+
+    <span class="hljs-keyword">if</span> (obj.elem) {
+        <span class="hljs-keyword">if</span> (isMod) <span class="hljs-keyword">return</span> TYPES.ELEM_MOD;
+        <span class="hljs-keyword">if</span> (!hasModVal) <span class="hljs-keyword">return</span> TYPES.ELEM;
+    }
+
+    <span class="hljs-keyword">if</span> (isMod) <span class="hljs-keyword">return</span> TYPES.BLOCK_MOD;
+    <span class="hljs-keyword">if</span> (!hasModVal) <span class="hljs-keyword">return</span> TYPES.BLOCK;
+};
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Checks whether BEM-naming object or string is a block.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>obj</code> can be an Object or a String.</strong><br/>(BEM-naming object or string representation of BEM entity.)</li>
+</ul>
+<p><strong>Returns a Boolean</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">BEMNaming.prototype.isBlock = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.typeOf(obj) === TYPES.BLOCK;
+};
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Checks whether BEM-naming object or string is modifier of a block.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>obj</code> can be an Object or a String.</strong><br/>(BEM-naming object or string representation of BEM entity.)</li>
+</ul>
+<p><strong>Returns a Boolean</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">BEMNaming.prototype.isBlockMod = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.typeOf(obj) === TYPES.BLOCK_MOD;
+};
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Checks whether BEM-naming object or string is element of a block.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>obj</code> can be an Object or a String.</strong><br/>(BEM-naming object or string representation of BEM entity.)</li>
+</ul>
+<p><strong>Returns a Boolean</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">BEMNaming.prototype.isElem = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.typeOf(obj) === TYPES.ELEM;
+};
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Checks whether BEM-naming object or string is element of a block.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>obj</code> can be an Object or a String.</strong><br/>(BEM-naming object or string representation of BEM entity.)</li>
+</ul>
+<p><strong>Returns a Boolean</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">BEMNaming.prototype.isElemMod = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.typeOf(obj) === TYPES.ELEM_MOD;
+};
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Parses string into BEM-naming.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>str</code> must be a String.</strong><br/>(String representation of BEM entity.)</li>
+</ul>
+<p><strong>Returns an Object or an undefined</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">BEMNaming.prototype.parse = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(str)</span> {</span>
+    <span class="hljs-keyword">var</span> executed = <span class="hljs-keyword">this</span>._regex.exec(str);
+
+    <span class="hljs-keyword">if</span> (!executed) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-keyword">var</span> elem = executed[<span class="hljs-number">5</span>],
+        modName = executed[<span class="hljs-number">2</span>] || executed[<span class="hljs-number">6</span>],
+        modVal = executed[<span class="hljs-number">3</span>] || executed[<span class="hljs-number">7</span>],
+        notation = {};
+
+    <span class="hljs-keyword">if</span> (modName &amp;&amp; (modVal === <span class="hljs-literal">undefined</span>)) {
+        modVal = <span class="hljs-literal">true</span>;
+    }
+
+    notation.block = executed[<span class="hljs-number">1</span>] || executed[<span class="hljs-number">4</span>];
+    elem &amp;&amp; (notation.elem = elem);
+    modName &amp;&amp; (notation.modName = modName);
+    modVal &amp;&amp; (notation.modVal = modVal);
+
+    <span class="hljs-keyword">return</span> notation;
+};
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments doc-section">
+          <div class="wrapper"><p>Forms a string according to BEM-naming object.</p>
+<p>Parameters:</p>
+<ul>
+<li><strong><code>obj</code> must be an Object.</strong><br/>(BEM-naming object)</li>
+</ul>
+<p><strong>Returns a String</strong></p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">BEMNaming.prototype.stringify = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(obj)</span> {</span>
+    <span class="hljs-keyword">if</span> (!obj || !obj.block) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'The field `block` is undefined. It is impossible to stringify BEM notation.'</span>);
+    }
+
+    <span class="hljs-keyword">var</span> buf = [obj.block];
+
+    <span class="hljs-keyword">if</span> (obj.elem) {
+        buf.push(<span class="hljs-keyword">this</span>.elemDelim + obj.elem);
+    }
+
+    <span class="hljs-keyword">if</span> (obj.modName) {
+        <span class="hljs-keyword">var</span> modVal = obj.modVal;
+
+        <span class="hljs-keyword">if</span> (modVal || modVal === <span class="hljs-number">0</span> || !obj.hasOwnProperty(<span class="hljs-string">'modVal'</span>)) {
+            buf.push(<span class="hljs-keyword">this</span>.modDelim + obj.modName);
+        }
+
+        <span class="hljs-keyword">if</span> (modVal &amp;&amp; modVal !== <span class="hljs-literal">true</span>) {
+            buf.push(<span class="hljs-keyword">this</span>.modDelim + modVal);
+        }
+    }
+
+    <span class="hljs-keyword">return</span> buf.join(<span class="hljs-string">''</span>);
+};
+
+BEMNaming.prototype._buildRegex = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> word = <span class="hljs-keyword">this</span>._wordPattern,
+        block = <span class="hljs-string">'('</span> + word + <span class="hljs-string">')'</span>,
+        elem = <span class="hljs-string">'(?:'</span> + <span class="hljs-keyword">this</span>.elemDelim + <span class="hljs-string">'('</span> + word + <span class="hljs-string">'))?'</span>,
+        mod = <span class="hljs-string">'(?:'</span> + <span class="hljs-keyword">this</span>.modDelim + <span class="hljs-string">'('</span> + word + <span class="hljs-string">'))?'</span>;
+
+    <span class="hljs-keyword">this</span>._regex = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>([<span class="hljs-string">'^'</span>, block, mod, mod, <span class="hljs-string">'$|^'</span>, block, elem, mod, mod, <span class="hljs-string">'$'</span>].join(<span class="hljs-string">''</span>));
+};
+
+<span class="hljs-keyword">var</span> defineAsGlobal = <span class="hljs-literal">true</span>,
+    originalNaming = <span class="hljs-keyword">new</span> BEMNaming(),
+    bemNaming = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(options)</span> {</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BEMNaming(options);
+    };
+
+bemNaming.BEMNaming  = BEMNaming;
+bemNaming.validate   = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> originalNaming.validate.apply(originalNaming, <span class="hljs-built_in">arguments</span>);   };
+bemNaming.parse      = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> originalNaming.parse.apply(originalNaming, <span class="hljs-built_in">arguments</span>);      };
+bemNaming.stringify  = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> originalNaming.stringify.apply(originalNaming, <span class="hljs-built_in">arguments</span>);  };
+bemNaming.typeOf     = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> originalNaming.typeOf.apply(originalNaming, <span class="hljs-built_in">arguments</span>);     };
+bemNaming.isBlock    = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> originalNaming.isBlock.apply(originalNaming, <span class="hljs-built_in">arguments</span>);    };
+bemNaming.isElem     = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> originalNaming.isElem.apply(originalNaming, <span class="hljs-built_in">arguments</span>);     };
+bemNaming.isBlockMod = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> originalNaming.isBlockMod.apply(originalNaming, <span class="hljs-built_in">arguments</span>); };
+bemNaming.isElemMod  = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-keyword">return</span> originalNaming.isElemMod.apply(originalNaming, <span class="hljs-built_in">arguments</span>);  };
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><p>Node.js</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> exports === <span class="hljs-string">'object'</span>) {
+    module.exports = bemNaming;
+    defineAsGlobal = <span class="hljs-literal">false</span>;
+}
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><p>YModules</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> modules === <span class="hljs-string">'object'</span>) {
+    modules.define(<span class="hljs-string">'bem-naming'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(provide)</span> {</span>
+        provide(bemNaming);
+    });
+    defineAsGlobal = <span class="hljs-literal">false</span>;
+}
+</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><p>AMD</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span>) {
+    define(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(require, exports, module)</span> {</span>
+        module.exports = bemNaming;
+    });
+    defineAsGlobal = <span class="hljs-literal">false</span>;
+}
+
+defineAsGlobal &amp;&amp; (global.bemNaming = bemNaming);
+})(<span class="hljs-keyword">this</span>);
+
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($, undefined)</span> {</span></pre></div>
       
       </div>
     
@@ -194,22 +550,6 @@ _buildClassesAccordingToMod.call(node, <span class="hljs-string">'block1:mod'</s
         <span class="hljs-keyword">if</span> (blockByFilter) {
             mod = mod.split(<span class="hljs-string">':'</span>)[<span class="hljs-number">1</span>];
         }
-
-        <span class="hljs-keyword">return</span> classes.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item)</span> {</span></pre></div>
-      
-      </div>
-    
-      <div class="segment">
-      
-        <div class="comments ">
-          <div class="wrapper"><p><code>js-</code>, <code>is-</code> and <code>_</code> prefixed classes shouldn&#39;t be processed</p>
-</div>
-        </div>
-      
-      
-        <div class="code"><pre class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^(js-|is-|_)\w+/</span>.test(item)) {
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-            }
 </pre></div>
       
       </div>
@@ -217,22 +557,52 @@ _buildClassesAccordingToMod.call(node, <span class="hljs-string">'block1:mod'</s
       <div class="segment">
       
         <div class="comments ">
-          <div class="wrapper"><p>we don&#39;t need to set mod twice</p>
-<pre><code class="lang-md">**TODO**: /_(?!_)[a-zA-Z0-9-]+$/ doesn&#39;t work, why?
-</code></pre>
+          <div class="wrapper"><p>modifier without value is a boolean</p>
 </div>
         </div>
       
       
-        <div class="code"><pre class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/_[a-zA-Z0-9-]+$/</span>.test(item.split(<span class="hljs-string">'__'</span>).pop())) {
+        <div class="code"><pre class="wrapper">        value = value || <span class="hljs-literal">true</span>;
+
+        <span class="hljs-keyword">return</span> classes.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item)</span> {</span>
+            <span class="hljs-keyword">var</span> objClass = bemNaming.parse(item);
+
+            <span class="hljs-keyword">if</span> (!bemNaming.validate(item)) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            }</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><p><code>js-</code> prefixed classes shouldn&#39;t be processed</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">            <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^js-/</span>.test(item)) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            }</pre></div>
+      
+      </div>
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><p>we don&#39;t need to process the same mod</p>
+</div>
+        </div>
+      
+      
+        <div class="code"><pre class="wrapper">            <span class="hljs-keyword">if</span> (mod === objClass.modName) {
                 <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
             }
 
-            <span class="hljs-keyword">var</span> clazz = item + MOD_DLMTR + mod;
-            <span class="hljs-keyword">if</span> (value) {
-                clazz += MOD_DLMTR + value;
-            }
-            <span class="hljs-keyword">return</span> clazz;
+            <span class="hljs-keyword">return</span> bemNaming.stringify({
+                block: objClass.block, elem: objClass.elem,
+                modName: mod, modVal: value
+            })
         }).filter(<span class="hljs-built_in">Boolean</span>);
     }
 </pre></div>
