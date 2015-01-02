@@ -2,7 +2,7 @@ mocha.setup('bdd');
 
 // use the following DOM Tree
 HTML = [
-    '<div class="block1 js-foo is-bar _baz">',
+    '<div class="block1 js-foo _baz">',
     '   <div class="block1__element1">',
     '      hello',
     '   </div>',
@@ -39,38 +39,37 @@ describe('jQuery.BEM', function() {
         it('should set mod without value', function() {
             expect(
                 this.$b1.setMod('mod').hasClass('block1_mod')
-            ).toBeTruthy();
+            ).to.be.eql(true);
         });
 
         it('should set mod with value', function() {
             expect(
                 this.$b1.setMod('mod', 'val').hasClass('block1_mod_val')
-            ).toBeTruthy();
+            ).to.be.eql(true);
         });
 
         it('should set mod for element', function() {
             expect(
                 this.$b1__el1.setMod('mod').hasClass('block1__element1_mod')
-            ).toBeTruthy();
+            ).to.be.eql(true);
         });
 
         it('should set mod for all blocks or elements on specific node', function() {
             this.$b2.setMod('mod');
-            expect(this.$b2.hasClass('block2_mod')).toBeTruthy();
-            expect(this.$b2.hasClass('block1__element2_mod')).toBeTruthy();
+            expect(this.$b2.hasClass('block2_mod')).to.be.eql(true);
+            expect(this.$b2.hasClass('block1__element2_mod')).to.be.eql(true);
         });
 
         it('should set mod for specific block that is chosen by filter', function() {
             this.$b2.setMod('block2:mod');
-            expect(this.$b2.hasClass('block2_mod')).toBeTruthy();
-            expect(this.$b2.hasClass('block1__element2_mod')).toBeFalsy();
+            expect(this.$b2.hasClass('block2_mod')).to.be.eql(true);
+            expect(this.$b2.hasClass('block1__element2_mod')).to.be.eql(false);
         });
 
-        it('should not set mod for js- or is- prefixed classes', function() {
+        it('should not set mod for js- prefixed classes', function() {
             this.$b1.setMod('mod');
-            expect(this.$b1.hasClass('js-foo_mod')).toBeFalsy();
-            expect(this.$b1.hasClass('is-bar_mod')).toBeFalsy();
-            expect(this.$b1.hasClass('_baz_mod')).toBeFalsy();
+            expect(this.$b1.hasClass('js-foo_mod')).to.be.eql(false);
+            expect(this.$b1.hasClass('_baz_mod')).to.be.eql(false);
         })
     });
     
@@ -86,31 +85,31 @@ describe('jQuery.BEM', function() {
         it('should remove mod without value', function() {
             expect(
                 this.$b1.delMod('mod').hasClass('block1_mod')
-            ).toBeFalsy();
+            ).to.be.eql(false);
         });
 
         it('should remove mod with value', function() {
             expect(
                 this.$b1__el1.delMod('mod', 'val').hasClass('block1_mod_val')
-            ).toBeFalsy();
+            ).to.be.eql(false);
         });
 
         it('should remove mod for all blocks or elements on specific node', function() {
             this.$b2.delMod('mod');
-            expect(this.$b2.hasClass('block2_mod')).toBeFalsy();
-            expect(this.$b1__el2.hasClass('block1__element2_mod')).toBeFalsy();
+            expect(this.$b2.hasClass('block2_mod')).to.be.eql(false);
+            expect(this.$b1__el2.hasClass('block1__element2_mod')).to.be.eql(false);
         });
 
         it('should remove mod for specific block that is chosen by filter', function() {
             this.$b2.delMod('block2:mod');
-            expect(this.$b2.hasClass('block2_mod')).toBeFalsy();
-            expect(this.$b2.hasClass('block1__element2_mod')).toBeTruthy();
+            expect(this.$b2.hasClass('block2_mod')).to.be.eql(false);
+            expect(this.$b2.hasClass('block1__element2_mod')).to.be.eql(true);
         });
 
         it('should remove mod with specific value', function() {
             this.$b1.delMod('mod', 'value');
-            expect(this.$b1.hasClass('block1_mod_value')).toBeFalsy();
-            expect(this.$b1.hasClass('block1_mod')).toBeTruthy();
+            expect(this.$b1.hasClass('block1_mod_value')).to.be.eql(false);
+            expect(this.$b1.hasClass('block1_mod')).to.be.eql(true);
         })
     });
 
@@ -121,11 +120,11 @@ describe('jQuery.BEM', function() {
         });
 
         it('should check mod', function() {
-            expect(this.$b1.hasMod('mod')).toBeTruthy();
+            expect(this.$b1.hasMod('mod')).to.be.eql(true);
         });
 
         it('should check mod for specific block chosen by filter', function() {
-            expect(this.$b2.hasMod('block2:mod', 'val')).toBeTruthy();
+            expect(this.$b2.hasMod('block2:mod', 'val')).to.be.eql(true);
         });
     });
 
@@ -135,13 +134,13 @@ describe('jQuery.BEM', function() {
         });
 
         it('should set mod if it`s has not been set yet', function() {
-            expect(this.$b1.hasClass('block1_mod')).toBeTruthy();
+            expect(this.$b1.hasClass('block1_mod')).to.be.eql(true);
         });
 
         it('should remove mod if it`s has been set already', function() {
             expect(
                 this.$b1.toggleMod('mod').hasClass('block1_mod')
-            ).toBeFalsy();
+            ).to.be.eql(false);
         });
     });
 });

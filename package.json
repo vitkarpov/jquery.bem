@@ -12,6 +12,13 @@
     "jquery"
   ],
   "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-mocha-test": "*",
+    "load-grunt-tasks": "*",
+    "mocha": "*",
+    "expect.js": "*",
     "grock": "git://github.com/vitkarpov/grock.git#postprocess-feature"
   },
   "scripts": {
